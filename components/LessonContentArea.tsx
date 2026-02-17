@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Lesson, ExplanationLayer } from '../types';
 import InteractiveWidget from './InteractiveWidget';
+import CodeSnippet from './CodeSnippet';
 
 interface LessonContentAreaProps {
   lesson: Lesson;
