@@ -1,24 +1,35 @@
 
 export type ExplanationLayer = 'leigo' | 'visual' | 'tecnico' | 'tutorial';
 
+export interface CodeSnippetData {
+  language: string;
+  fileName: string;
+  code: string;
+  description?: string;
+}
+
 export interface LessonContent {
   leigo: string;
+  leigoSnippet?: CodeSnippetData;
   visual: {
     metaphor: string;
     widgetType: 'bezier' | 'tree' | 'docker' | 'git' | 'logic' | 'sql' | 'rag' | 'flow' | 'camera' | 'color' | 'sorting' | 'neuron' | 'chaining' | 'training' | 'timeline';
     widgetTitle: string;
   };
+  visualSnippet?: CodeSnippetData;
   tecnico: {
     definition: string;
     architecture: string[];
     terms: string[];
-    dictionary: Record<string, string>; // Mapeia termo técnico -> tradução leiga
+    dictionary: Record<string, string>;
   };
+  tecnicoSnippet?: CodeSnippetData;
   tutorial: {
     steps: string[];
     commonErrors: string[];
     validation: string;
   };
+  tutorialSnippets?: CodeSnippetData[];
 }
 
 export interface Lesson {
