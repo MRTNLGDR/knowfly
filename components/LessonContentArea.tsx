@@ -112,6 +112,15 @@ const LessonContentArea: React.FC<LessonContentAreaProps> = ({
                 <p className="text-xl md:text-4xl font-medium leading-[1.4] md:leading-[1.3] text-zinc-200 tracking-tight">
                   {lesson.content.leigo}
                 </p>
+                {lesson.content.leigoSnippet && (
+                  <div className="mt-10 md:mt-14">
+                    <div className="flex items-center gap-3 mb-4">
+                      <span className="text-[8px] md:text-[10px] font-black text-sky-400 tracking-[0.3em] uppercase">Em codigo, seria algo assim...</span>
+                      <div className="h-px flex-1 bg-sky-500/10" />
+                    </div>
+                    <CodeSnippet snippet={lesson.content.leigoSnippet} accentColor="sky" />
+                  </div>
+                )}
                 <div className="mt-12 md:mt-16 flex gap-6 md:gap-12 items-center opacity-40">
                   <div className="h-px flex-1 bg-gradient-to-r from-zinc-800 to-transparent" />
                   <span className="text-[8px] md:text-[10px] font-black tracking-[0.5em] uppercase">Human Perspective</span>
@@ -131,6 +140,15 @@ const LessonContentArea: React.FC<LessonContentAreaProps> = ({
                      title={lesson.content.visual.widgetTitle}
                    />
                 </div>
+                {lesson.content.visualSnippet && (
+                  <div className="mt-8 md:mt-10">
+                    <div className="flex items-center gap-3 mb-4">
+                      <span className="text-[8px] md:text-[10px] font-black text-purple-400 tracking-[0.3em] uppercase">Codigo por tras da visualizacao</span>
+                      <div className="h-px flex-1 bg-purple-500/10" />
+                    </div>
+                    <CodeSnippet snippet={lesson.content.visualSnippet} accentColor="purple" />
+                  </div>
+                )}
               </div>
             )}
 
@@ -144,6 +162,16 @@ const LessonContentArea: React.FC<LessonContentAreaProps> = ({
                         {lesson.content.tecnico.definition}
                       </div>
                     </section>
+
+                    {lesson.content.tecnicoSnippet && (
+                      <section>
+                        <div className="flex items-center gap-3 mb-4 md:mb-6">
+                          <span className="text-[9px] md:text-[11px] font-black text-emerald-500 tracking-[0.3em] uppercase">Implementacao de Referencia</span>
+                          <div className="h-px flex-1 bg-emerald-500/10" />
+                        </div>
+                        <CodeSnippet snippet={lesson.content.tecnicoSnippet} accentColor="emerald" />
+                      </section>
+                    )}
                     
                     <section>
                       <h4 className="text-[9px] md:text-[11px] font-black text-zinc-500 tracking-[0.3em] uppercase mb-4 md:mb-6 flex items-center gap-2">
@@ -241,20 +269,30 @@ const LessonContentArea: React.FC<LessonContentAreaProps> = ({
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-16">
                   <div className="lg:col-span-8 space-y-6 md:space-y-8">
                     <h4 className="text-[9px] md:text-[11px] font-black text-amber-500 tracking-[0.3em] uppercase">Pipeline de Execução</h4>
-                    {lesson.content.tutorial.steps.map((step, i) => (
-                      <div key={i} className="p-6 md:p-8 rounded-[24px] md:rounded-[32px] bg-white/5 border border-white/5 hover:border-amber-500/20 transition-all flex gap-4 md:gap-8 items-start group">
-                        <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg md:rounded-2xl bg-zinc-900 border border-white/5 flex items-center justify-center font-black text-base md:text-lg text-amber-500 group-hover:scale-110 transition-transform shadow-xl shrink-0">
-                          {i+1}
+                    {lesson.content.tutorial.steps.map((step, i) => {
+                      const stepSnippet = lesson.content.tutorialSnippets?.[i];
+                      return (
+                        <div key={i} className="space-y-4">
+                          <div className="p-6 md:p-8 rounded-[24px] md:rounded-[32px] bg-white/5 border border-white/5 hover:border-amber-500/20 transition-all flex gap-4 md:gap-8 items-start group">
+                            <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg md:rounded-2xl bg-zinc-900 border border-white/5 flex items-center justify-center font-black text-base md:text-lg text-amber-500 group-hover:scale-110 transition-transform shadow-xl shrink-0">
+                              {i+1}
+                            </div>
+                            <div className="pt-1">
+                               <p className="text-base md:text-xl font-bold text-zinc-100 mb-1 md:mb-2 leading-snug">{step}</p>
+                               <div className="flex items-center gap-2 text-[8px] md:text-[10px] font-black text-zinc-500 uppercase tracking-widest">
+                                 <div className="w-1 h-1 rounded-full bg-amber-500" />
+                                 Aguardando Acao
+                               </div>
+                            </div>
+                          </div>
+                          {stepSnippet && (
+                            <div className="ml-14 md:ml-20">
+                              <CodeSnippet snippet={stepSnippet} accentColor="amber" />
+                            </div>
+                          )}
                         </div>
-                        <div className="pt-1">
-                           <p className="text-base md:text-xl font-bold text-zinc-100 mb-1 md:mb-2 leading-snug">{step}</p>
-                           <div className="flex items-center gap-2 text-[8px] md:text-[10px] font-black text-zinc-500 uppercase tracking-widest">
-                             <div className="w-1 h-1 rounded-full bg-amber-500" />
-                             Aguardando Ação
-                           </div>
-                        </div>
-                      </div>
-                    ))}
+                      );
+                    })}
                   </div>
 
                   <div className="lg:col-span-4 space-y-8 md:space-y-10">
