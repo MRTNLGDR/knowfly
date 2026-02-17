@@ -1,0 +1,9 @@
+{
+  "name": "Copy of Nexus Academy: Engenharia de IA Aplicada",
+  "description": "Uma plataforma educacional completa para formação em Engenharia de Software com foco em Inteligência Artificial, seguindo uma metodologia de aprendizado em quatro camadas e interfaces interativas de alta fidelidade.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone",
+    "geolocation"
+  ]
+}

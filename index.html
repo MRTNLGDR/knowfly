@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nexus Academy // Graduação em Engenharia de IA</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --accent: #3b82f6;
+        --accent-glow: rgba(59, 130, 246, 0.4);
+      }
+      body {
+        background-color: #050505;
+        color: #e4e4e7;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        scrollbar-width: thin;
+        scrollbar-color: #18181b transparent;
+        overflow: hidden;
+      }
+      ::-webkit-scrollbar { width: 4px; }
+      ::-webkit-scrollbar-track { background: transparent; }
+      ::-webkit-scrollbar-thumb { background: #27272a; border-radius: 10px; }
+      
+      .glass { background: rgba(9, 9, 11, 0.7); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.05); }
+      .shen-card { 
+        background: linear-gradient(145deg, rgba(24, 24, 27, 0.4) 0%, rgba(9, 9, 11, 0.8) 100%);
+        border: 1px solid rgba(255,255,255,0.03);
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+      }
+      .neon-border { border: 1px solid var(--accent); box-shadow: 0 0 15px var(--accent-glow); }
+      .text-glow { text-shadow: 0 0 10px var(--accent-glow); }
+      .mono { font-family: 'JetBrains Mono', monospace; }
+      
+      @keyframes gradient-flow {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+      }
+      .animate-gradient {
+        background: linear-gradient(-45deg, #1e1b4b, #000000, #1e3a8a, #000000);
+        background-size: 400% 400%;
+        animation: gradient-flow 15s ease infinite;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "@google/genai": "https://esm.sh/@google/genai@^1.41.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+    <script src="https://unpkg.com/lucide@latest"></script>
+  </body>
+</html>
